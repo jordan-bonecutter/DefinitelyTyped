@@ -332,6 +332,13 @@ interface VideoDecoder {
     decode(chunk: EncodedVideoChunk): void;
     flush(): Promise<void>;
     reset(): void;
+    addEventListener(name: VideoDecoderEventType, event: VideoDecoderEvent): void;
+}
+
+type VideoDecoderEventType = "dequeue";
+
+interface VideoDecoderEvent {
+    target: VideoDecoder;
 }
 
 declare var VideoDecoder: {
